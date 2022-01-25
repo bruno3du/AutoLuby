@@ -11,15 +11,15 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --color-white: #FFFFFF;
     --color-gray: #A2A2A2;
-    --color-black-600: #3C3C3C;
+    --color-black: #3C3C3C;
     --color-orange: #FA982F;
-    
+    --color-red: #F54A48;
   }
  
   body {
-  background-color: var(--color-white);
-  color: var(--white);
-  font-family: 'Poppins', sans-serif;
+    background-color: var(--color-white);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
   }
   
   body,
@@ -27,21 +27,22 @@ export const GlobalStyle = createGlobalStyle`
   textarea,
   select,
   button {
-	font: 400, 1rem, 'Poppins', sans-serif;
+	  font: 400, 1rem, 'Poppins', sans-serif;
   }
 
   button {
-	cursor: pointer;
+	  cursor: pointer;
+    border: none;
   }
 
   a {
-	color: inherit;
-	text-decoration: none;
+	  color: inherit;
+	  text-decoration: none;
   }
 
   @media (max-width: 1080px) {
 	  html {
-		font-size: 93.75%;
+		  font-size: 93.75%;
 	  }
   }
 

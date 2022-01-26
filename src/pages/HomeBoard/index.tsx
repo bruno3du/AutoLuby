@@ -6,9 +6,19 @@ import reservedCar from "../../assets/images/reserved-car.svg";
 import vehiclesList from "../../assets/images/vehiclesList.svg";
 import employeesList from "../../assets/images/employeesList.svg";
 import { useUser } from "../../hooks/useUser";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeBoard() {
   const { user, companyDatas } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user.name) {
+      navigate("/");
+    }
+  });
+
   return (
     <Container>
       <Header withSearch />

@@ -2,8 +2,29 @@ import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 
 export function useUser() {
-  const { user, setUser, storage, setStorage, companyDatas, setCompanyDatas } =
-    useContext(UserContext);
+  const {
+    auth,
+    setAuth,
+    user,
+    setUser,
+    storage,
+    setStorage,
+    companyDatas,
+    setCompanyDatas,
+    handleLogOut,
+    loading,
+  } = useContext(UserContext);
 
-  return { user, setUser, storage, setStorage, companyDatas, setCompanyDatas };
+  return {
+    loading,
+    handleLogOut,
+    auth,
+    setAuth,
+    user,
+    setUser,
+    storage,
+    setStorage,
+    companyDatas,
+    setCompanyDatas,
+  };
 }

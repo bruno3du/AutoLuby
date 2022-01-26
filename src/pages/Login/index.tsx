@@ -12,7 +12,7 @@ import { useUser } from "../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const { setUser, setCompanyDatas, setStorage } = useUser();
+  const { setUser, setCompanyDatas, setStorage, setAuth } = useUser();
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -33,6 +33,7 @@ export default function Login() {
             totalEmployees: res.data.totalEmployees,
           });
           setStorage(res.data.token);
+          setAuth(true);
           navigate("/home");
         })
         .catch(() => alert("Email ou senha Inválido"));

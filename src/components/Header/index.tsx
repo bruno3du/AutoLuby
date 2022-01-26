@@ -3,6 +3,7 @@ import Logo from "../Logo";
 import Search from "../Search/Index";
 import { Container } from "./styles";
 import logoutImg from "../../assets/images/log-out.svg";
+import { useUser } from "../../hooks/useUser";
 
 interface HeaderProps {
   withSearch?: boolean;
@@ -10,11 +11,11 @@ interface HeaderProps {
 
 export default function Header({ withSearch = false }: HeaderProps) {
   const [showSearch, setShowSearch] = useState(false);
+  const { handleLogOut } = useUser();
 
   useEffect(() => {
     setShowSearch(withSearch);
   }, [withSearch]);
-
 
   return (
     <Container>
@@ -23,7 +24,7 @@ export default function Header({ withSearch = false }: HeaderProps) {
       </div>
       <div>{showSearch && <Search />}</div>
       <nav>
-        <button>
+        <button onClick={handleLogOut}>
           Sair
           <img src={logoutImg} alt="logout" />
         </button>

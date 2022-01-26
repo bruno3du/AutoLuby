@@ -5,32 +5,34 @@ import { Container } from "./styles";
 import reservedCar from "../../assets/images/reserved-car.svg";
 import vehiclesList from "../../assets/images/vehiclesList.svg";
 import employeesList from "../../assets/images/employeesList.svg";
+import { useUser } from "../../hooks/useUser";
 
 export default function HomeBoard() {
+  const { user, companyDatas } = useUser();
   return (
     <Container>
       <Header withSearch />
       <section>
-        <h1>Bem-vindo, Carlos</h1>
+        <h1>Bem-vindo, {user.name}</h1>
         <p>Menu</p>
         <div>
           <MenuCard
             title="Veículos reservados e vendidos "
             description="Veículos reservados e vendidos por você"
             image={reservedCar}
-            info="147 Veículos"
+            info={companyDatas.totalVehiclesLoggedUser + " VEÍCULOS"}
           />
           <MenuCard
             title="Listagem geral de veículos"
             description="Listagem de veículos de toda a empresa"
             image={vehiclesList}
-            info="180 Veículos"
+            info={companyDatas.totalVehicles + " VEÍCULOS"}
           />
           <MenuCard
             title="Funcionários da empresa"
             description="Listagem de todos os funcionários da empresa"
             image={employeesList}
-            info="147 funcionários"
+            info={companyDatas.totalEmployees + " FUNCIONÁRIOS"}
           />
         </div>
       </section>

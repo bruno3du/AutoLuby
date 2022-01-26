@@ -8,10 +8,12 @@ import { useFormik } from "formik";
 import { Schema } from "../../utils/yup";
 import { EnumError } from "../../types/enum";
 import { api } from "../../services/api";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import { useUser } from "../../hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [_, setStorage] = useLocalStorage("@AutoLuby:Token", "");
+  const { setUser, setCompanyDatas, setStorage } = useUser();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -23,8 +25,17 @@ export default function Login() {
     onSubmit: (values) => {
       api
         .post("/login", values)
-        .then((res) => setStorage(res.data.token))
-        .catch((err) => console.log(err));
+        .then((res) => {
+          setUser(res.data.user);
+          setCompanyDatas({
+            totalVehiclesLoggedUser: res.data.totalVehiclesLoggedUser,
+            totalVehicles: res.data.totalVehicles,
+            totalEmployees: res.data.totalEmployees,
+          });
+          setStorage(res.data.token);
+          navigate("/home");
+        })
+        .catch(() => alert("Email ou senha Inválido"));
     },
   });
 

@@ -1,18 +1,14 @@
 import { GlobalStyle } from "./globalStyle";
-import Login from "./pages/Login";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomeBoard from "./pages/HomeBoard";
+import { UserContextProvider } from "./context/UserContext";
+import AppRoute from "./Routes/AppRouter";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Router>
-        <Routes>
-          <Route index element={<Login />} />
-          <Route path='/home' element={<HomeBoard />} />
-        </Routes>
-      </Router>
+      <UserContextProvider>
+        <AppRoute />
+      </UserContextProvider>
     </>
   );
 }

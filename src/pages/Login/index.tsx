@@ -11,7 +11,7 @@ import { api } from "../../services/api";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 export default function Login() {
-  const [storage, setStorage] = useLocalStorage("@AutoLuby:Token", "");
+  const [_, setStorage] = useLocalStorage("@AutoLuby:Token", "");
 
   const formik = useFormik({
     initialValues: {

@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const InputField = styled.input<ContainerProps>`
   width: 100%;
-  padding: 10px 15px;
+  padding: 9px 15px;
   background: #f9f9f9;
   border: ${({ inputValid }) => inputValid};
   border-radius: 5px;

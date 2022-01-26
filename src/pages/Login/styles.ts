@@ -7,52 +7,53 @@ export const Container = styled.main`
 
   section {
     flex: 1;
+    min-width: 500px;
 
     > div:first-child {
       width: 80%;
       margin: 0 auto;
-      margin-top: 20px;
+      margin-top: 1.25rem;
     }
 
     .sessionForm {
       width: 60%;
       margin: 0 auto;
-      margin-top: 50px;
+      margin-top: 3.125rem;
 
       h1 {
-        font-size: 34px;
+        font-size: 2.125rem;
         font-weight: 600;
         color: var(--color-black);
       }
 
       p {
-        font-size: 12px;
+        font-size: 0.75rem;
         color: var(--color-gray);
       }
 
       form {
-        margin-top: 60px;
+        margin-top: 3.75rem;
         display: flex;
         flex-direction: column;
 
         label {
-          font-size: 14px;
+          font-size: 0.875rem;
           font-weight: 600;
           color: #7c7c7c;
-          margin-bottom: 6px;
+          margin-bottom: 0.375rem;
         }
 
         .sessionInput {
-          margin-bottom: 30px;
+          margin-bottom: 1.875rem;
         }
 
         .sessionPassword {
           display: flex;
           justify-content: space-between;
           font-weight: 500;
-          margin-bottom: 40px;
+          margin-bottom: 2.5rem;
           color: var(--color-red);
-          font-size: 14px;
+          font-size: 0.875rem;
 
           > div {
             display: flex;
@@ -63,9 +64,8 @@ export const Container = styled.main`
               cursor: pointer;
               background-color: var(--color-red);
               border-radius: 3px;
-
-              height: 20px;
-              width: 20px;
+              height: 1.25rem;
+              width: 1.25rem;
               display: inline-block;
 
               &:checked {
@@ -77,15 +77,15 @@ export const Container = styled.main`
 
             label {
               color: var(--color-red);
-              margin-left: 10px;
+              margin-left: 0.625rem;
             }
           }
         }
       }
 
       > div {
-        margin-top: 40px;
-        font-size: 14px;
+        margin-top: 2.5rem;
+        font-size: 0.75rem;
         font-weight: 500;
         color: var(--color-gray);
         span {
@@ -97,9 +97,13 @@ export const Container = styled.main`
 
   aside {
     flex: 1;
+    min-width: 700px;
     overflow: hidden;
+    height: 100vh;
 
     img {
+      // background-size: cover;
+      background-attachment: fixed;
       width: 100%;
       transform: translateY(-10%);
     }

@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
  
   body {
     background-color: var(--color-white);
-    color: var(--white);
+    color: var(--color-black);
     font-family: 'Poppins', sans-serif;
   }
   
@@ -27,12 +27,14 @@ export const GlobalStyle = createGlobalStyle`
   textarea,
   select,
   button {
-	  font: 400, 1rem, 'Poppins', sans-serif;
+	  font: 400, 0.825rem, 'Poppins', sans-serif;
+    color: var(--color-black);
   }
-
+  
   button {
-	  cursor: pointer;
+    cursor: pointer;
     border: none;
+    background: none;
   }
 
   a {

@@ -7,8 +7,12 @@ import { Container } from "./styles";
 import { useFormik } from "formik";
 import { Schema } from "../../utils/yup";
 import { EnumError } from "../../types/enum";
+import { api } from "../../services/api";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 export default function Login() {
+  const [storage, setStorage] = useLocalStorage("@AutoLuby:Token", "");
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -17,11 +21,12 @@ export default function Login() {
     validationSchema: Schema,
     validateOnBlur: true,
     onSubmit: (values) => {
-      
+      api
+        .post("/login", values)
+        .then((res) => setStorage(res.data.token))
+        .catch((err) => console.log(err));
     },
   });
-
-  console.log(formik.touched.email);
 
   return (
     <Container>

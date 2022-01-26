@@ -3,11 +3,10 @@ import logoImg from "../../assets/images/logo-symbol.svg";
 
 const Container = styled.div`
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   span {
-    margin-left: 20px;
-    font-size: 36px;
+    margin-left: 1.25rem;
+    font-size: 2.25rem;
     font-weight: 600;
     color: var(--color-red);
   }

@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../Logo";
 import Search from "../Search/Index";
 import { Container } from "./styles";
 import logoutImg from "../../assets/images/log-out.svg";
 
-export default function Header() {
-  const [showSearch, setShowSearch] = useState(true); //TODO
+interface HeaderProps {
+  withSearch?: boolean;
+}
+
+export default function Header({ withSearch = false }: HeaderProps) {
+  const [showSearch, setShowSearch] = useState(false);
+
+  useEffect(() => {
+    setShowSearch(withSearch);
+  }, [withSearch]);
+
+
   return (
     <Container>
       <div>

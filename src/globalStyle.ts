@@ -21,6 +21,10 @@ export const GlobalStyle = createGlobalStyle`
     color: var(--color-black);
     font-family: 'Poppins', sans-serif;
   }
+
+  h1, h2, h3, h4 {
+    font-weight: 600;
+  }
   
   body,
   input,

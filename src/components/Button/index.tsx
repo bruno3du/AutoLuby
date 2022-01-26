@@ -1,10 +1,10 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, ReactChild } from "react";
 import { Container } from "./style";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  isOutlined?: boolean;
+  children: ReactChild;
 };
 
-export default function Button({ ...props }: ButtonProps) {
-  return <Container {...props}>Texto</Container>;
+export default function Button({ children, ...props }: ButtonProps) {
+  return <Container {...props}>{children}</Container>;
 }

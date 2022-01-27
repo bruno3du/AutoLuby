@@ -3,23 +3,13 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 
-// interface TableBodyCustomProps {
-//   rows: {
-//     name: string;
-//     calories: number;
-//     fat: number;
-//     carbs: number;
-//     protein: number;
-//     price: number;
-//   }[];
-// }
 
 interface TableBodyCustomProps {
-  rows: (string | number)[][];
+  rows: (string | number | JSX.Element)[][];
 }
 
 export default function TableBodyCustom({ rows }: TableBodyCustomProps) {
-  console.log(rows);
+
   return (
     <TableBody>
       {rows.map((row, index) => (

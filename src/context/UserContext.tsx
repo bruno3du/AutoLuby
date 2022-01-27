@@ -1,11 +1,27 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import LoadingState from "../components/LoadingState";
-
 import useLocalStorage from "../hooks/useLocalStorage";
 import { api } from "../services/api";
 
 interface userProviderProps {
   children: ReactNode;
+}
+
+interface VehiclesType {
+  brand: string;
+  chassi: string;
+  color: string;
+  km: number;
+  model: string;
+  status: string;
+  value: number;
+  yer: string;
 }
 
 interface UserType {
@@ -14,6 +30,7 @@ interface UserType {
   cpf: string;
   salary: number;
   bio: string;
+  vehicles: VehiclesType[];
 }
 
 interface companyDatasType {
@@ -47,7 +64,7 @@ export function UserContextProvider({ children }: userProviderProps) {
   const [auth, setAuth] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  async function isLogged() {
+  const isLogged = useCallback(async () => {
     await api
       .get("/employees", {
         headers: {
@@ -62,7 +79,7 @@ export function UserContextProvider({ children }: userProviderProps) {
         setAuth(false);
       })
       .finally(() => setLoading(false));
-  }
+  }, [storage]);
 
   async function handleLogOut() {
     setStorage("");
@@ -70,9 +87,10 @@ export function UserContextProvider({ children }: userProviderProps) {
     setCompanyDatas({} as companyDatasType);
     setAuth(false);
   }
+
   useEffect(() => {
     isLogged();
-  }, []);
+  }, [isLogged]);
 
   if (loading) {
     return <LoadingState />;

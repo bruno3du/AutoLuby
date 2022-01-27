@@ -1,18 +1,20 @@
+import { useEffect, useState } from "react";
+import { formatToMoney } from "../../utils/formatDatas";
+import { cpf as formatCpf } from "magic-masks";
+import { useTableData } from "../../hooks/useTableData";
+
 import Header from "../../components/Header";
 import { Container, HeaderSession } from "./styles";
-import { cpf as formatCpf } from "magic-masks";
+import Search from "../../components/Search/Index";
+import Pagination from "../../components/Pagination";
+
 import Table from "@mui/material/Table";
 import Box from "@mui/material/Box";
 import TableContainer from "@mui/material/TableContainer";
-
+import Typography from "@mui/material/Typography";
 import TableToolBar from "../../components/TableToolBar";
 import TableHeadCustom from "../../components/TableHeadCustom";
 import TableBodyCustom from "../../components/TableBody";
-import Pagination from "../../components/Pagination";
-import { useEffect, useState } from "react";
-import Search from "../../components/Search/Index";
-import { useTableData } from "../../hooks/useTableData";
-import { formatToMoney } from "../../utils/formatDatas";
 
 interface EmployeesData {
   name: string;
@@ -80,9 +82,23 @@ export default function Employees() {
   return (
     <Container>
       <Header />
+      <Typography
+        variant="h4"
+        sx={{
+          width: "90%",
+          maxWidth: "1180px",
+          m: "0 auto",
+          mt: 5,
+          fontFamily: "Poppins",
+          fontWeight: 600,
+          color: "#495057",
+        }}
+      >
+        Funcionários
+      </Typography>
       <Box
         sx={{
-          width: "80%",
+          width: "90%",
           maxWidth: "1180px",
           m: "0 auto",
           mt: 5,
@@ -94,13 +110,14 @@ export default function Employees() {
       >
         <Box sx={{ m: "0 auto", mb: 2, width: "98%" }}>
           <HeaderSession>
-            <TableToolBar title="Listagem de veículos reservados e vendidos" />
+            <TableToolBar title="Listagem de funcionários da empresa" />
             <div>
               <Pagination
-                limit={5}
+                limit={tableEmployees.perPage}
                 offset={offset}
-                total={120}
+                total={tableEmployees.totalRecords}
                 setOffset={setOffset}
+                current={tableEmployees.currentPage}
               />
               <Search width="200px" />
             </div>

@@ -1,5 +1,4 @@
 import Header from "../../components/Header";
-import Paper from "@mui/material/Paper";
 import { Container, HeaderSession } from "./styles";
 import Table from "@mui/material/Table";
 import Box from "@mui/material/Box";
@@ -75,8 +74,18 @@ export default function Employees() {
   return (
     <Container>
       <Header />
-      <Box sx={{ width: "80%", m: "0 auto", mt: 5 }}>
-        <Paper sx={{ width: "100%", mb: 2 }}>
+      <Box
+        sx={{
+          width: "80%",
+          m: "0 auto",
+          mt: 5,
+          boxShadow: "0px 0px 6px rgba(162, 162, 162, 0.25)",
+          pb: "10px",
+          borderRadius: "3px",
+          background: "var(--color-white)",
+        }}
+      >
+        <Box sx={{ m: "0 auto", mb: 2, width: "98%" }}>
           <HeaderSession>
             <TableToolBar title="Listagem de veículos reservados e vendidos" />
             <div>
@@ -95,7 +104,7 @@ export default function Employees() {
               <TableBodyCustom rows={rows} />
             </Table>
           </TableContainer>
-        </Paper>
+        </Box>
       </Box>
     </Container>
   );

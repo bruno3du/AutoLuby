@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+import LoadingState from "../components/LoadingState";
 
 import useLocalStorage from "../hooks/useLocalStorage";
 import { api } from "../services/api";
@@ -73,7 +74,7 @@ export function UserContextProvider({ children }: userProviderProps) {
   }, []);
 
   if (loading) {
-    return <div>Loading</div>;
+    return <LoadingState />
   }
 
   return (

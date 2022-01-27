@@ -1,3 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const Container = styled.thead``;
+export const TableHeadStyled = styled.thead`
+  background: #F9F9F9;
+
+`

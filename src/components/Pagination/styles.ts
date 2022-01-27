@@ -4,6 +4,7 @@ export const Container = styled.ul`
   display: flex;
   list-style-type: none;
   font-family: "Poppins", sans-sarif;
+  gap: 4px;
   li {
     display: flex;
     align-items: center;
@@ -19,12 +20,10 @@ export const Container = styled.ul`
 
       &:disabled {
         background: #ededed;
-        cursor: not-allowed;
+        cursor: default;
       }
     }
-    & + li {
-      margin-left: 3px;
-    }
+
     .btn {
       font-weight: 600;
       width: 24px;

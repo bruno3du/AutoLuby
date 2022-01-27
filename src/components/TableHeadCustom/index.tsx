@@ -1,4 +1,3 @@
-// import { Container } from "./styles";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -14,10 +13,22 @@ interface TableHeadProps {
 
 export default function TableHeadCustom({ headCells }: TableHeadProps) {
   return (
-    <TableHead>
-      <TableRow>
+    <TableHead sx={{ background: "#F9F9F9" }}>
+      <TableRow >
         {headCells.map((headCell) => (
-          <TableCell key={headCell.id}>{headCell.label}</TableCell>
+          <TableCell
+            sx={{
+              fontWeight: 600,
+              color: "#858585",
+              fontFamily: "Poppins",
+              border: "none",
+              borderRadius: "3px",
+              fontSize: "13px"
+            }}
+            key={headCell.id}
+          >
+            {headCell.label.toUpperCase()}
+          </TableCell>
         ))}
       </TableRow>
     </TableHead>

@@ -18,15 +18,14 @@ export default function Pagination({
   const MAX_ITEMS = 3;
   const MAX_LEFT = (MAX_ITEMS - 1) / 2;
 
-  // offset é deslocamento
-  // limit é o limite de elementos exibidos
+ 
   const current = offset ? offset / limit + 1 : 1; //Página atual
   const pages = Math.ceil(total / limit); // Quantidade de página
-  const maxFirst = Math.max(pages - (MAX_ITEMS - 1), 1); //
+  const maxFirst = Math.max(pages - (MAX_ITEMS - 1), 1); 
   const first = Math.min(Math.max(current - MAX_LEFT, 1), maxFirst);
 
   function onPageChange(page: number) {
-    setOffset((page - 1) * limit); // menos um por que vai transformar em valor de index
+    setOffset((page - 1) * limit);
   }
 
   return (
@@ -48,7 +47,7 @@ export default function Pagination({
             <button
               onClick={() => onPageChange(page)}
               className={
-                page === current ? "pagination__item--active btn" : 'btn'
+                page === current ? "pagination__item--active btn" : "btn"
               }
             >
               {page}
@@ -59,7 +58,7 @@ export default function Pagination({
         <button
           onClick={() => onPageChange(current + 1)}
           disabled={current === pages}
-          className='btn-prev-next'
+          className="btn-prev-next"
         >
           Próxima
           <img src={arrowRight} alt="Próximo" />

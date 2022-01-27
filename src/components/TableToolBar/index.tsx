@@ -16,7 +16,7 @@ export default function TableToolBar({ title }: TableToolBarProps) {
         }}
       >
         <Typography
-          sx={{ flex: "1 1" }}
+          sx={{ flex: "1", fontWeight: 600, color: '#495057', fontFamily: "Poppins" }}
           variant="h6"
           id="tableTitle"
           component="div"

@@ -19,13 +19,12 @@ interface TableBodyCustomProps {
 }
 
 export default function TableBodyCustom({ rows }: TableBodyCustomProps) {
-
   return (
     <TableBody>
       {rows.map((row, index) => (
         <TableRow key={index} hover>
           {row.map((cell, i) => (
-            <TableCell key={`cell ${i}`}>{cell}</TableCell>
+            <TableCell sx={{ fontWeight: 500, color: "#495057", fontFamily: 'Poppins', border: "none", }}  key={`cell ${i}`}>{cell}</TableCell>
           ))}
         </TableRow>
       ))}

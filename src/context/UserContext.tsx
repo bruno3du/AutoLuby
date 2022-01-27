@@ -46,7 +46,6 @@ export function UserContextProvider({ children }: userProviderProps) {
   );
   const [auth, setAuth] = useState(false);
   const [loading, setLoading] = useState(true);
- 
 
   async function isLogged() {
     await api
@@ -57,8 +56,11 @@ export function UserContextProvider({ children }: userProviderProps) {
           Authorization: `Bearer ${storage}`,
         },
       })
-      .then((res) => setAuth(true))
-      .catch(() => setAuth(false))
+      .then((res) => (res.status < 300 ? setAuth(true) : setAuth(false)))
+      .catch((err) => {
+        console.log(err);
+        setAuth(false);
+      })
       .finally(() => setLoading(false));
   }
 
@@ -67,14 +69,13 @@ export function UserContextProvider({ children }: userProviderProps) {
     setUser({} as UserType);
     setCompanyDatas({} as companyDatasType);
     setAuth(false);
- 
   }
   useEffect(() => {
     isLogged();
   }, []);
 
   if (loading) {
-    return <LoadingState />
+    return <LoadingState />;
   }
 
   return (

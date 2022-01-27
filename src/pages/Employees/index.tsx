@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import { Container, HeaderSession } from "./styles";
+import { cpf as formatCpf } from "magic-masks";
 import Table from "@mui/material/Table";
 import Box from "@mui/material/Box";
 import TableContainer from "@mui/material/TableContainer";
@@ -8,17 +9,17 @@ import TableToolBar from "../../components/TableToolBar";
 import TableHeadCustom from "../../components/TableHeadCustom";
 import TableBodyCustom from "../../components/TableBody";
 import Pagination from "../../components/Pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "../../components/Search/Index";
+import { useTableData } from "../../hooks/useTableData";
+import { formatToMoney } from "../../utils/formatDatas";
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-) {
-  return [name, calories, fat, carbs, protein];
+interface EmployeesData {
+  name: string;
+  email: string;
+  cpf: string;
+  salary: number;
+  bio: string;
 }
 
 interface HeadCell {
@@ -26,57 +27,63 @@ interface HeadCell {
   label: string;
 }
 
-const headCells: readonly HeadCell[] = [
-  {
-    id: "Marca",
-    label: "Marca",
-  },
-  {
-    id: "calories",
-    label: "modelo",
-  },
-  {
-    id: "Ano",
-    label: "Ano",
-  },
-  {
-    id: "km",
-    label: "km",
-  },
-  {
-    id: "cor",
-    label: "cor",
-  },
-  {
-    id: "status",
-    label: "status",
-  },
-  {
-    id: "chassi",
-    label: "chassi",
-  },
-  {
-    id: "valor",
-    label: "valor",
-  },
-];
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
-
 export default function Employees() {
   const [offset, setOffset] = useState(0);
+  const { getEmployeesData, tableEmployees } = useTableData();
+  const [rows, setRows] = useState([] as (string | number)[][]);
+  const headCells: HeadCell[] = [
+    {
+      id: "Nome",
+      label: "Nome",
+    },
+    {
+      id: "email",
+      label: "email",
+    },
+    {
+      id: "cpf",
+      label: "cpf",
+    },
+    {
+      id: "valor",
+      label: "valor",
+    },
+    {
+      id: "bio",
+      label: "bio",
+    },
+  ];
+
+  useEffect(() => {
+    getEmployeesData();
+  }, [getEmployeesData]);
+
+  useEffect(() => {
+    function createTableDataEmployee(tableEmployees: EmployeesData[]) {
+      const newRows = tableEmployees.map((data) => {
+        return [
+          data.name,
+          data.email,
+          formatCpf(data.cpf),
+          formatToMoney(data.salary),
+          data.bio,
+        ];
+      });
+
+      setRows(newRows);
+    }
+    if (tableEmployees.employees) {
+      createTableDataEmployee(tableEmployees.employees);
+    }
+  }, [tableEmployees.employees]);
+
   return (
     <Container>
       <Header />
       <Box
         sx={{
           width: "80%",
+          maxWidth: "1180px",
           m: "0 auto",
           mt: 5,
           boxShadow: "0px 0px 6px rgba(162, 162, 162, 0.25)",
@@ -101,7 +108,7 @@ export default function Employees() {
           <TableContainer>
             <Table>
               <TableHeadCustom headCells={headCells} />
-              <TableBodyCustom rows={rows} />
+              {tableEmployees && <TableBodyCustom rows={rows} />}
             </Table>
           </TableContainer>
         </Box>

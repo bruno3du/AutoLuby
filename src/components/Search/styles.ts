@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface ContainerProps {
+  width?: string;
+}
+
+export const Container = styled.div<ContainerProps>`
   position: relative;
   input {
-    width: 100%;
+    width: ${({ width }) => (width ? width : "100%")};
     padding: 9px 15px;
     background: #f9f9f9;
     border: 1px solid #e6e6e6;

@@ -78,6 +78,7 @@ export const Container = styled.main`
             label {
               color: var(--color-red);
               margin-left: 0.625rem;
+              font-weight: 500;
             }
           }
         }

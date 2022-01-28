@@ -20,13 +20,9 @@ export default function Pagination({
   const MAX_ITEMS = 3;
   const MAX_LEFT = (MAX_ITEMS - 1) / 2;
 
-  // Mudar propriedade ***current*** invés de ***currentStandart***
-  // quando for possível faze-lo por meio de query
-
-  const currentStandart = offset ? offset / limit + 1 : 1; //Página atual
   const pages = Math.ceil(total / limit); // Quantidade de página
   const maxFirst = Math.max(pages - (MAX_ITEMS - 1), 1);
-  const first = Math.min(Math.max(currentStandart - MAX_LEFT, 1), maxFirst);
+  const first = Math.min(Math.max(current - MAX_LEFT, 1), maxFirst);
 
   function onPageChange(page: number) {
     setOffset((page - 1) * limit);
@@ -37,8 +33,8 @@ export default function Pagination({
       <li>
         <button
           className="btn-prev-next"
-          onClick={() => onPageChange(currentStandart - 1)}
-          disabled={currentStandart === 1}
+          onClick={() => onPageChange(current - 1)}
+          disabled={current === 1}
         >
           <img src={arrowLeft} alt="Anterior" />
           <span>Anterior</span>
@@ -51,9 +47,7 @@ export default function Pagination({
             <button
               onClick={() => onPageChange(page)}
               className={
-                page === currentStandart
-                  ? "pagination__item--active btn"
-                  : "btn"
+                page === current ? "pagination__item--active btn" : "btn"
               }
             >
               {page}
@@ -62,8 +56,8 @@ export default function Pagination({
         ))}
       <li>
         <button
-          onClick={() => onPageChange(currentStandart + 1)}
-          disabled={currentStandart === pages}
+          onClick={() => onPageChange(current + 1)}
+          disabled={current === pages}
           className="btn-prev-next"
         >
           Próxima

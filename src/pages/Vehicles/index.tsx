@@ -5,7 +5,6 @@ import Pagination from "../../components/Pagination";
 import Search from "../../components/Search/Index";
 import TableBodyCustom from "../../components/TableBody";
 import TableHeadCustom from "../../components/TableHeadCustom";
-
 import TableToolBar from "../../components/TableToolBar";
 import { useTableData } from "../../hooks/useTableData";
 import { formatThreeDigits, formatToMoney } from "../../utils/formatDatas";
@@ -55,10 +54,12 @@ export default function Vehicles() {
 
       setRows(newRows);
     }
+
     if (allVehicles.vehicles) {
       createTableDataEmployee(allVehicles.vehicles);
     }
   }, [allVehicles.vehicles]);
+
 
   const headCells: HeadCell[] = [
     {

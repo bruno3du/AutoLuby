@@ -10,9 +10,11 @@ import { EnumError } from "../../types/enum";
 import { api } from "../../services/api";
 import { useUser } from "../../hooks/useUser";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
   const { setUser, setCompanyDatas, setStorage, setAuth } = useUser();
+  const [rememberPassword, setRememberPassword] = useState(true);
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -93,6 +95,8 @@ export default function Login() {
                   type="checkbox"
                   id="rememberPassword"
                   name="rememberPassword"
+                  checked={rememberPassword}
+                  onClick={() => setRememberPassword(!rememberPassword)}
                 />
                 <label htmlFor="rememberPassword">Lembrar minha senha</label>
               </div>
@@ -105,7 +109,7 @@ export default function Login() {
           <div>
             Ainda não tem uma conta?
             <Link to="/">
-              <span>Criar Conta</span>
+              <span style={{ marginLeft: "5px" }}>Criar Conta</span>
             </Link>
           </div>
         </div>

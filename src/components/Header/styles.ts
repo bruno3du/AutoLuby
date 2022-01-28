@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
+
+
 export const Container = styled.header`
+background: var(--color-white);
+box-shadow: 0px 2px 1.562rem rgba(169, 169, 169, 0.2);
+> div {
+  max-width: 1180px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; 
   align-items: center;
   flex-wrap: wrap;
-  background: var(--color-white);
   padding: 0.625rem 0;
-  box-shadow: 0px 2px 1.562rem rgba(169, 169, 169, 0.2);
   padding: 1rem 1.825rem;
   gap: 0.825rem;
+  margin: 0 auto;
+  }
 
   nav {
     > button {

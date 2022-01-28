@@ -110,7 +110,7 @@ export default function UserVehicles() {
       </Typography>
       <Box
         sx={{
-          width: "90%",
+          width: "90%", 
           maxWidth: "1180px",
           m: "0 auto",
           mt: 5,
@@ -127,7 +127,7 @@ export default function UserVehicles() {
               <Pagination
                 limit={5}
                 offset={offset}
-                total={120}
+                total={10}
                 setOffset={setOffset}
                 current={1}
               />

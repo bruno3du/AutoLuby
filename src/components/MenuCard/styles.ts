@@ -11,7 +11,7 @@ export const Container = styled.div`
   transition: all 0.3s;
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 
 
   display: flex;
@@ -25,7 +25,7 @@ export const Container = styled.div`
     justify-content: space-between;
 
     p {
-      margin-top: 10px;
+      margin-top: 0.625rem;
       color: #858585;
     }
 

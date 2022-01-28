@@ -11,10 +11,10 @@ export const Container = styled.ul`
 
     .btn-prev-next {
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
       font-weight: 600;
       color: #858585;
-      padding: 5px 10px;
+      padding: 5px 0.625rem;
       align-items: center;
       border-radius: 3px;
 
@@ -26,8 +26,8 @@ export const Container = styled.ul`
 
     .btn {
       font-weight: 600;
-      width: 24px;
-      height: 24px;
+      width: 1.5rem;
+      height: 1.5rem;
       border-radius: 3px;
       color: #858585;
     }

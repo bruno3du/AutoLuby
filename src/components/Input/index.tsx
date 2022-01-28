@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from "react";
-import { InputField, Container } from "./style";
+import { InputField, Container } from "./styles";
 import { EnumError } from "../../types/enum";
 import errorInput from "../../assets/images/errorInput.svg";
 import validInput from "../../assets/images/validInput.svg";

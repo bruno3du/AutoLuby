@@ -9,13 +9,13 @@ export const HeaderSession = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 15px;
+  padding: 1.25rem 0.937rem;
   flex-wrap: wrap;
 
   > div {
     display: flex;
     align-items: center;
     flex-wrap: wrap-reverse;
-    gap: 15px;
+    gap: 0.937rem;
   }
 `;

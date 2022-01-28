@@ -103,7 +103,7 @@ export default function Employees() {
           m: "0 auto",
           mt: 5,
           boxShadow: "0px 0px 6px rgba(162, 162, 162, 0.25)",
-          pb: "10px",
+          pb: "0.625rem",
           borderRadius: "3px",
           background: "var(--color-white)",
         }}
@@ -119,7 +119,7 @@ export default function Employees() {
                 setOffset={setOffset}
                 current={tableEmployees.currentPage}
               />
-              <Search width="200px" />
+              <Search width="12.5rem" />
             </div>
           </HeaderSession>
           <TableContainer>

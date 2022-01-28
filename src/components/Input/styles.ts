@@ -11,13 +11,13 @@ export const Container = styled.div`
   > div:nth-child(2) {
     position: absolute;
     top: 25%;
-    right: 15px;
+    right: 0.937rem;
   }
 `;
 
 export const InputField = styled.input<ContainerProps>`
   width: 100%;
-  padding: 9px 15px;
+  padding: 0.562rem 0.937rem;
   background: #f9f9f9;
   border: ${({ inputValid }) => inputValid};
   border-radius: 5px;

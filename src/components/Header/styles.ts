@@ -6,8 +6,8 @@ export const Container = styled.header`
   align-items: center;
   flex-wrap: wrap;
   background: var(--color-white);
-  padding: 10px 0;
-  box-shadow: 0px 2px 25px rgba(169, 169, 169, 0.2);
+  padding: 0.625rem 0;
+  box-shadow: 0px 2px 1.562rem rgba(169, 169, 169, 0.2);
   padding: 1rem 1.825rem;
   gap: 0.825rem;
 
@@ -15,13 +15,13 @@ export const Container = styled.header`
     > button {
       color: var(--color-white);
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
       justify-content: center;
       align-items: center;
-      padding: 10px;
+      padding: 0.625rem;
       background: var(--color-red);
       font-weight: 600;
-      font-size; 14px;
+      font-size; 0.875rem;
       border-radius: 3px;
 
       &:hover {

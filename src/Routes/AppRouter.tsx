@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import Employees from "../pages/Employees";
 import UserVehicles from "../pages/UserVehicles";
+import Vehicles from "../pages/Vehicles";
 
 export default function AppRoute() {
   return (
@@ -31,6 +32,14 @@ export default function AppRoute() {
           element={
             <PrivateRoute>
               <UserVehicles />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/todos-veiculos"
+          element={
+            <PrivateRoute>
+              <Vehicles />
             </PrivateRoute>
           }
         />

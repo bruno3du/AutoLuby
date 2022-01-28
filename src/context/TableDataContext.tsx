@@ -8,6 +8,8 @@ interface TableDataProviderProps {
 interface TableDataContextType {
   getEmployeesData: () => Promise<void>;
   tableEmployees: EmployeesTableData;
+  getVehiclesData: () => Promise<void>;
+  allVehicles: VehiclesTableDatas;
 }
 
 interface EmployeesData {
@@ -25,6 +27,24 @@ interface EmployeesTableData {
   employees: EmployeesData[];
 }
 
+interface VehiclesType {
+  brand: string;
+  chassi: string;
+  color: string;
+  km: number;
+  model: string;
+  status: string;
+  value: number;
+  yer: string;
+}
+
+interface VehiclesTableDatas {
+  currentPage: number;
+  perPage: number;
+  totalRecords: number;
+  vehicles: VehiclesType[];
+}
+
 export const TableDataContext = createContext({} as TableDataContextType);
 
 export default function TableDataProvider({
@@ -33,12 +53,26 @@ export default function TableDataProvider({
   const [tableEmployees, setTableEmployees] = useState(
     {} as EmployeesTableData
   );
+  const [allVehicles, setAllVehicles] = useState({} as VehiclesTableDatas);
+
   const { storage } = useUser();
 
-  
+  const getVehiclesData = useCallback(async () => {
+    await api
+      .get("/vehicles", {
+        headers: {
+          Accept: "application/json",
+          ContentType: "application/json",
+          Authorization: `Bearer ${storage}`,
+        },
+      })
+      .then((res) => setAllVehicles(res.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [storage]);
 
   const getEmployeesData = useCallback(async () => {
-    if (!storage) return alert("not work");
     await api
       .get("/employees", {
         headers: {
@@ -54,7 +88,9 @@ export default function TableDataProvider({
   }, [storage]);
 
   return (
-    <TableDataContext.Provider value={{ getEmployeesData, tableEmployees }}>
+    <TableDataContext.Provider
+      value={{ getEmployeesData, tableEmployees, getVehiclesData, allVehicles }}
+    >
       {children}
     </TableDataContext.Provider>
   );

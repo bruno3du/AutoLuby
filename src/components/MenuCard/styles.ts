@@ -11,6 +11,8 @@ export const Container = styled.div`
   transition: all 0.3s;
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
+  margin-top: 20px;
+
 
   display: flex;
   justify-content: space-between;
@@ -32,13 +34,6 @@ export const Container = styled.div`
       font-weight: bold;
       align-self: flex-end;
     }
-  }
-
-  > div:nth-child(2) {
-  }
-
-  & + div {
-    margin-top: 20px;
   }
 
   &:hover {

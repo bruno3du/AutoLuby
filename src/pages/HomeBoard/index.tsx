@@ -27,22 +27,25 @@ export default function HomeBoard() {
         <p>Menu</p>
         <div>
           <MenuCard
-            title="Veículos reservados e vendidos "
+            title="Veículos reservados e vendidos"
             description="Veículos reservados e vendidos por você"
             image={reservedCar}
             info={companyDatas.totalVehiclesLoggedUser + " VEÍCULOS"}
+            link='/seus-veiculos'
           />
           <MenuCard
             title="Listagem geral de veículos"
             description="Listagem de veículos de toda a empresa"
             image={vehiclesList}
             info={companyDatas.totalVehicles + " VEÍCULOS"}
+            link='/todos-veiculos'
           />
           <MenuCard
             title="Funcionários da empresa"
             description="Listagem de todos os funcionários da empresa"
             image={employeesList}
             info={companyDatas.totalEmployees + " FUNCIONÁRIOS"}
+            link='/funcionarios'
           />
         </div>
       </section>

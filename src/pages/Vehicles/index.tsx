@@ -8,7 +8,6 @@ import TableHeadCustom from "../../components/TableHeadCustom";
 
 import TableToolBar from "../../components/TableToolBar";
 import { useTableData } from "../../hooks/useTableData";
-import { useUser } from "../../hooks/useUser";
 import { formatThreeDigits, formatToMoney } from "../../utils/formatDatas";
 import { Container, HeaderSession, Status } from "./styles";
 
@@ -31,7 +30,6 @@ interface VehiclesType {
 export default function Vehicles() {
   const [offset, setOffset] = useState(0);
   const [rows, setRows] = useState([] as (string | number | JSX.Element)[][]);
-  const { user } = useUser();
   const { getVehiclesData, allVehicles } = useTableData();
 
   useEffect(() => {
@@ -96,7 +94,7 @@ export default function Vehicles() {
       label: "valor",
     },
   ];
-console.log(allVehicles)
+
   return (
     <Container>
       <Header />
